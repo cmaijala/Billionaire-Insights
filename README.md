@@ -7,28 +7,28 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 ## Project 3 for the University of Minnesota Data Visualization Boot Camp
 
 ### Collaborators: 
-## Micah Korinek: https://github.com/mKorinek
-## Mysee Kathy Lee: https://github.com/mkLee
-## Zane Huttinga: https://github.com/ZaneHuttinga
-## Chinna Maijala: https://github.com/cmaijala
+#### Micah Korinek: https://github.com/mKorinek
+#### Mysee Kathy Lee: https://github.com/mkLee
+#### Zane Huttinga: https://github.com/ZaneHuttinga
+#### Chinna Maijala: https://github.com/cmaijala
 
-## Overview: 
+### Overview: 
 
-###  * An overview of the project and its purpose  
+####  * An overview of the project and its purpose  
 
-## Instructions:
+### Instructions:
 
-###  * Instructions on how to use and interact with the project
+####  * Instructions on how to use and interact with the project
 
 
-## Ethical Considerations
+### Ethical Considerations
 
-###  * At least one paragraph summarizing efforts for ethical considerations made in the project
+####  * At least one paragraph summarizing efforts for ethical considerations made in the project
 
-## References 
+### References 
 
-###  *Billionaires Statistics Dataset (2023)
+####  *Billionaires Statistics Dataset (2023)
 
-## You can access the link here: (https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset?select=Billionaires+Statistics+Dataset.csv).
+#### You can access the link here: (https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset?select=Billionaires+Statistics+Dataset.csv).
 
 

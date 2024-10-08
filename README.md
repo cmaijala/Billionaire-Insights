@@ -6,7 +6,7 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
   
 ## Project 3 for the University of Minnesota Data Visualization Boot Camp
 
-### Collaborators: 
+#### Collaborators: 
 #### Micah Korinek: https://github.com/mKorinek
 #### Mysee Kathy Lee: https://github.com/mkLee
 #### Zane Huttinga: https://github.com/ZaneHuttinga

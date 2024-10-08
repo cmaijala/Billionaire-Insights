@@ -1,4 +1,4 @@
-# 2023 Billionaire Insights: A Wealth Landscape Unveiled
+# <div align="center"> 2023 Billionaire Insights: A Wealth Landscape Unveiled </div>
 
 ![jacob-vizek-FCSQRPEtXVI-unsplash](https://github.com/user-attachments/assets/cd3d4044-9105-47fe-94b6-8a0e296b4f3d)
 

@@ -27,7 +27,7 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 ### References 
 
-####  *Billionaires Statistics Dataset (2023)
+####  * Billionaires Statistics Dataset (2023)
 
 #### You can access the link here: (https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset?select=Billionaires+Statistics+Dataset.csv).
 

@@ -27,8 +27,8 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 ### References 
 
-####  * Billionaires Statistics Dataset (2023)
+####  Nidula Elgiriyewithana. (2023). Billionaires Statistics Dataset (2023) [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/6570253
 
-#### You can access the link here: (https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset?select=Billionaires+Statistics+Dataset.csv).
+
 
 

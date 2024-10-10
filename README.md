@@ -14,16 +14,16 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 ### Overview: 
 
-####  * An overview of the project and its purpose  
+####  The Data Visualization Track for the 2023 Billionaire Insights dataset aims to explore and communicate key insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Using a combination of Python and JavaScript libraries, we will create interactive visualizations that allow users to filter data based on various criteria, such as industry, country, and wealth source (self-made vs. inherited). The project will be powered by a PostgreSQL database, ensuring efficient data storage and retrieval. We will utilize Plotly for dynamic visualizations and Flask as a backend framework to serve interactive API routes, allowing users to engage with the data through HTML menus and dropdowns.
 
-### Instructions:
+### Instructions for Use:
 
-####  * Instructions on how to use and interact with the project
+####  Users can interact with the project by selecting various filters in the provided dropdown menus. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as wealth distribution across industries or demographic breakdowns by age and gender. The README.md file will provide detailed instructions on how to set up the environment, connect to the PostgreSQL database, and run the Flask server.
 
 
 ### Ethical Considerations
 
-####  The 2023 Billionaire Insights dataset incorporates several ethical considerations to ensure responsible data usage and integrity. First, it emphasizes transparency by clearly stating the sources of information and the methodologies used for data collection, allowing users to assess the reliability of the dataset. Additionally, it prioritizes privacy by anonymizing sensitive personal details where applicable, thereby safeguarding individual identities while still providing valuable insights into wealth distribution and demographics. The dataset also reflects a commitment to inclusivity by ensuring diverse representation across various industries and regions, aiming to highlight disparities and encourage equitable discussions about wealth and opportunity. Furthermore, the creators have implemented a robust framework for data governance, ensuring compliance with relevant legal standards and promoting ethical standards in research and analysis.
+####  In developing this project, we have made significant efforts to address ethical considerations surrounding data usage. The dataset includes anonymized personal information to protect the identities of individuals while still providing insights into wealth trends. We emphasize transparency by documenting data sources and methodologies, ensuring users understand the context of the information presented. Additionally, we are committed to inclusive representation, ensuring that our visualizations highlight disparities and promote discussions around economic inequality and diversity in wealth creation.
 
 ### References 
 

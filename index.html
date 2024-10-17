@@ -27,13 +27,13 @@
     <div class="row">
       <div class="col-md-3">
         <div class="card card-body bg-light mb-3 space"> <!-- Using Bootstrap spacing -->
-          <h6>Filter by Category:</h6>
+          <h6>Filter by Industry:</h6>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
         <br>
         <div class="card card-primary">
           <div class="card-header">
-            <h4 class="card-title">Billionaire Profile</h4>
+            <h4 class="card-title">Industry Profile</h4>
           </div>
           <div id="billionaire-metadata" class="card-body"></div>
         </div>
@@ -44,6 +44,11 @@
       <div class="row">
         <div class="col-md-12">
           <div id="pie"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="bubble"></div>
         </div>
       </div>
     </div>

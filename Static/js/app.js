@@ -13,7 +13,7 @@ function buildMetadata(category, data) {
   panel.html("");
 
   // Set a title
-  panel.append("h5").text("Industry Profile");
+  //panel.append("h5").text("Industry Profile");
 
   // Calculate total number of people in the selected category
   const totalPeople = filteredData.length;
@@ -33,15 +33,16 @@ function buildMetadata(category, data) {
   const averageAge = (totalPeople > 0) ? (totalAge / totalPeople).toFixed(2) : 0;
 
   // Find the wealthiest billionaire
-  const wealthiestBillionaire = filteredData.reduce((max, obj) => (obj.finalWorth > max.finalWorth ? obj : max), filteredData[0]);
+  const wealthiestBillionaire = filteredData.sort((a, b) => b.finalWorth - a.finalWorth)[0];
+
 
   // Prepare fields to display
   const fieldsToDisplay = [
-    `Total Number of People: ${totalPeople}`,
+    `Total Number of Billionaires: ${totalPeople}`,
     `Percentage of Billionaires in this Industry: ${percentageInCategory}%`,
-    `Average Wealth (in millions): ${averageWealth}`,
+    `Average Wealth (in billions): ${averageWealth}`,
     `Average Age: ${averageAge}`,
-    `Wealthiest Billionaire: ${wealthiestBillionaire.personName} with a net worth of ${wealthiestBillionaire.finalWorth} million dollars`
+    `Wealthiest Billionaire: ${wealthiestBillionaire.personName} with a net worth of ${wealthiestBillionaire.finalWorth} billion dollars`
   ];
 
   fieldsToDisplay.forEach(field => {
@@ -114,6 +115,67 @@ function buildCharts(category, data) {
   Plotly.newPlot('bar', barData, barLayout);
 }
 
+// function to build the world map bubble chart
+function buildBubble(category, data) {
+  const filtInd = data.filter(object => object.category === category)
+  console.log('Filtered data length:', filtInd.length);
+
+  // Extracting latitude, longitude, billionaire counts, and countries
+  let latitude = filtInd.map(d => d.country_lat);
+  console.log('Latitude:', latitude);
+  let longitude = filtInd.map(d => d.country_long);
+  console.log('Longitude:', longitude);
+  let billionaireCount = filtInd.length;
+  console.log('Billionaire Count:', billionaireCount);
+  let countries = filtInd.map(d => d.country);
+  console.log('Countries:', countries);
+
+  // Build a Bubble Chart
+  let bubbleMap = {
+    type: 'scatter',
+    x: longitude,
+    y: latitude,
+    mode: 'markers',
+    marker: {
+      size: billionaireCount, // Scale marker size
+      color: billionaireCount,
+      opacity: 0.5,
+      //colorscale: 'Viridis',
+      //colorbar: { title: 'Billionaire Count' }
+    },
+    text: countries
+  };
+
+  let bubbleLayout = {
+    title: `Billionaires by Country`,
+    xaxis: { title: 'Longitude' , range: [-180, 180],},
+    yaxis: { title: 'Latitude', range: [-90, 90], },
+    showlegend: false,
+    height: 700,
+    width: 1200,
+    responsive: false,
+    aspectRatio: 2,
+    images: [{
+      source: "Resources/world_map_equirectangular_projection.png",
+      width: 1440,
+      height: 720,
+      x: 0,
+      y: 0,
+      xref: "paper",
+      yref: "paper",
+      sizex: 1,
+      sizey: 1,
+      xanchor: "left",
+      yanchor: "bottom",
+      opacity: 1, // Adjust opacity if needed
+      layer: "below" // Place the image behind the plot
+      }],
+  };
+
+  // Render the Bubble Chart
+  Plotly.newPlot('bubble', [bubbleMap], bubbleLayout);
+};
+
 // Function to run on page load
 function init() {
   loadData(data => {
@@ -129,6 +191,7 @@ function init() {
     buildCharts(firstCategory, data);
     buildMetadata(firstCategory, data);
     buildPie(firstCategory, data);
+    buildBubble(firstCategory, data);
   });
 }
 
@@ -138,6 +201,7 @@ function optionChanged(newCategory) {
     buildCharts(newCategory, data);
     buildMetadata(newCategory, data);
     buildPie(newCategory, data);
+    buildBubble(newCategory, data);
   });
 }
 

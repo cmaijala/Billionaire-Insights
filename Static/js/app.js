@@ -120,15 +120,52 @@ function buildBubble(category, data) {
   const filtInd = data.filter(object => object.category === category)
   console.log('Filtered data length:', filtInd.length);
 
-  // Extracting latitude, longitude, billionaire counts, and countries
-  let latitude = filtInd.map(d => d.country_lat);
-  console.log('Latitude:', latitude);
-  let longitude = filtInd.map(d => d.country_long);
-  console.log('Longitude:', longitude);
-  let billionaireCount = filtInd.length;
-  console.log('Billionaire Count:', billionaireCount);
+  // Extracting latitude, longitude, and countries
+  let latitudes = filtInd.map(d => d.country_lat);
+  console.log('Latitude:', latitudes);
+  let longitudes = filtInd.map(d => d.country_long);
+  console.log('Longitude:', longitudes);
+  //let billionaireCount = filtInd.length;
+  //console.log('Billionaire Count:', billionaireCount);
   let countries = filtInd.map(d => d.country);
   console.log('Countries:', countries);
+
+  //let country = [];
+  //let latitude = [];
+  //let longitude = [];
+  //let billionaireCount = [];
+
+  //for (let i = 0; i < filtInd.length; i++) {
+  //  if (country.includes(countries[i]) === false)
+  //    country.push(countries[i]);
+  //    console.log(country);
+  //    latitude.push(latitudes[i]);
+  //    console.log(latitude);
+  //    longitude.push(longitudes[i]);
+  //    console.log(longitude);
+  //    billionaireCount.push(1);
+    //else if (depth < 30) return "greenyellow";
+    //else if (depth < 50) return "yellow";
+    //else if (depth < 70) return "gold";
+    //else if (depth < 90) return "orange";
+  //else billionaireCount[i]++;
+
+  const country_map = countries.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  let country = Array.from(country_map.keys());
+  console.log(country);
+
+  const latitude_map = latitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  let latitude = Array.from(latitude_map.keys());
+  console.log(latitude);
+
+  const longitude_map = longitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  let longitude = Array.from(longitude_map.keys());
+  console.log(longitude);
+
+  let billionaireCount = Array.from(country_map.values()).map(function(x) { return x * 1; });;
+  console.log(billionaireCount);
+
+  console.log('Billionaire Count:', billionaireCount);
 
   // Build a Bubble Chart
   let bubbleMap = {
@@ -139,11 +176,11 @@ function buildBubble(category, data) {
     marker: {
       size: billionaireCount, // Scale marker size
       color: billionaireCount,
-      opacity: 0.5,
+      opacity: 0.75,
       //colorscale: 'Viridis',
       //colorbar: { title: 'Billionaire Count' }
     },
-    text: countries
+    text: country
   };
 
   let bubbleLayout = {

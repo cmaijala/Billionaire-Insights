@@ -20,6 +20,10 @@ The Data Visualization Track for the 2023 Billionaire Insights dataset aims to e
 
 Users can interact with the project by selecting various filters in the provided dropdown menus. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as wealth distribution across industries or demographic breakdowns by age and gender. The README.md file will provide detailed instructions on how to set up the environment, connect to the PostgreSQL database, and run the Flask server.
 
+![image](https://github.com/user-attachments/assets/f4cd7220-adc9-4c9e-99b0-a8d472fa66eb)
+
+
+
 ### Ethical Considerations:
 
 In developing this project, we have made significant efforts to address ethical considerations surrounding data usage. The dataset includes anonymized personal information to protect the identities of individuals while still providing insights into wealth trends. We emphasize transparency by documenting data sources and methodologies, ensuring users understand the context of the information presented. Additionally, we are committed to inclusive representation, ensuring that our visualizations highlight disparities and promote discussions around economic inequality and diversity in wealth creation.

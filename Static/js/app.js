@@ -5,9 +5,31 @@ function loadData(callback) {
   });
 }
 
+// Function to initialize dropdown
+function initDropdown(data) {
+  const categories = [...new Set(data.map(obj => obj.category))]; // Unique categories
+  const sortedCategories = ['All', ...categories.sort()]; // Add "All" option
+  const categoryDropdown = d3.select("#selDataset");
+  sortedCategories.forEach((category) => {
+    categoryDropdown.append("option").text(category).property("value", category);
+  });
+}
+
+// Function to filter data based on category
+
+
+
+
 // Build the demographic info panel
 function buildMetadata(category, data) {
-  const filteredData = data.filter(obj => obj.category === category);
+  function filterData(category, data) {
+    if (category === "All") {
+      return data; // Return all data if "All" is selected
+    }
+    return data.filter(obj => obj.category === category);
+  }
+
+  const filteredData = filterData(category, data);
 
   const panel = d3.select("#billionaire-metadata");
   panel.html("");
@@ -62,7 +84,7 @@ function buildPie(category, data) {
     const nepoMale = filtInd.filter(person => person.selfMade === "False" && person.gender === 'M').length;
 
     // Define colors for each segment
-    const colors = ['#FF9999', '#66B3FF', '#C0392B', '#2980B9'];
+    const colors = ['#FF9999', '#66B3FF', '#C0392B', '#003366'];
 
     // Build a Pie Chart
     const pieData = [{
@@ -96,13 +118,30 @@ function buildCharts(category, data) {
   const personNames = topTen.map(obj => obj.personName); // Extract person names
   const netWorths = topTen.map(obj => +obj.finalWorth); // Convert to numbers
 
+    // Assign colors based on self-made status and gender
+    const colors = [];
+    topTen.forEach(person => {
+      if (person.selfMade === "True" && person.gender === 'F') {
+        colors.push('#FF9999'); // Light Red
+      } else if (person.selfMade === "True" && person.gender === 'M') {
+        colors.push('#66B3FF'); // Light Blue
+      } else if (person.selfMade === "False" && person.gender === 'F') {
+        colors.push('#C0392B'); // Dark Red
+      } else if (person.selfMade === "False" && person.gender === 'M') {
+        colors.push('#003366'); // Dark Blue
+      }
+    });
+
   // For the Bar Chart (personName on x-axis and netWorth on y-axis)
   const barData = [{
     type: 'bar',
     x: personNames,  // Person names on the x-axis
-    y: netWorths,               // Net worths on the y-axis
+    y: netWorths,    // Net worths on the y-axis
     text: personNames,
-    orientation: 'v'            // Vertical bars
+    marker: {
+      color: colors // Set the color for each bar
+    },
+    orientation: 'v' // Vertical bars
   }];
 
   const barLayout = {
@@ -113,6 +152,61 @@ function buildCharts(category, data) {
 
   // Render the Bar Chart
   Plotly.newPlot('bar', barData, barLayout);
+}
+
+// Function to build the scatter chart
+function buildScatter(category, data) {
+  const filteredData = data.filter(obj => obj.category === category);
+
+  // Filter out entries with null or 0 age
+  const validData = filteredData.filter(person => person.age && +person.age > 0);
+  // Prepare arrays for x and y axes
+  const ages = [];
+  const wealths = [];
+  const colors = [];
+
+  validData.forEach(person => {
+      ages.push(+person.age); // Age
+      wealths.push(+person.finalWorth); // Wealth
+
+      // Assign colors based on self-made status and gender
+      if (person.selfMade === "True" && person.gender === 'F') {
+          colors.push('#FF9999'); // Light Red
+      } else if (person.selfMade === "True" && person.gender === 'M') {
+          colors.push('#66B3FF'); // Light Blue
+      } else if (person.selfMade === "False" && person.gender === 'F') {
+          colors.push('#C0392B'); // Dark Red
+      } else if (person.selfMade === "False" && person.gender === 'M') {
+          colors.push('#003366'); // Dark Blue
+      }
+  });
+
+  const scatterData = [{
+      x: ages,
+      y: wealths,
+      mode: 'markers',
+      type: 'scatter',
+      marker: {
+          size: 10,
+          color: colors,
+          line: {
+              width: 1
+          }
+      }
+  }];
+
+  const scatterLayout = {
+    title: `Age vs. Wealth in ${category}`,
+    xaxis: { title: 'Age' },
+    yaxis: { 
+        title: 'Wealth (in billions)',
+        type: 'log' // Set the y-axis to logarithmic scale
+    },
+    showlegend: false
+};
+
+  // Render the scatter chart
+  Plotly.newPlot('scatter-plot', scatterData, scatterLayout);
 }
 
 // function to build the world map bubble chart
@@ -213,22 +307,19 @@ function buildBubble(category, data) {
   Plotly.newPlot('bubble', [bubbleMap], bubbleLayout);
 };
 
+
+
+
 // Function to run on page load
 function init() {
   loadData(data => {
-    const categories = [...new Set(data.map(obj => obj.category))]; // Unique categories
-    const sortedCategories = categories.sort(); // Sort categories alphabetically
-    const dropdown = d3.select("#selDataset");
-
-    sortedCategories.forEach((category) => {
-      dropdown.append("option").text(category).property("value", category);
-    });
-
-    const firstCategory = sortedCategories[0];
+    initDropdown(data); // Initialize dropdown with data
+    const firstCategory = d3.select("#selDataset").property("value");
     buildCharts(firstCategory, data);
     buildMetadata(firstCategory, data);
     buildPie(firstCategory, data);
     buildBubble(firstCategory, data);
+    buildScatter(firstCategory, data); 
   });
 }
 
@@ -239,6 +330,7 @@ function optionChanged(newCategory) {
     buildMetadata(newCategory, data);
     buildPie(newCategory, data);
     buildBubble(newCategory, data);
+    buildScatter(newCategory, data); 
   });
 }
 

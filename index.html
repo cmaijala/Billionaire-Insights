@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 p-5 text-center bg-light">
@@ -26,7 +25,7 @@
     <br>
     <div class="row">
       <div class="col-md-3">
-        <div class="card card-body bg-light mb-3 space"> <!-- Using Bootstrap spacing -->
+        <div class="card card-body bg-light mb-3 space">
           <h6>Filter by Industry:</h6>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
@@ -39,12 +38,15 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div id="bar"></div> <!-- Only bar chart retained -->
+        <div id="bar"></div> <!-- Bar chart -->
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div id="pie"></div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div id="pie" style="margin-top: 20px;"></div> <!-- Pie chart -->
+      </div>
+      <div class="col-md-6">
+        <div id="scatter-plot" style="height: 500px; margin-top: 20px;"></div> <!-- Scatter plot -->
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -53,6 +55,7 @@
       </div>
     </div>
   </div>
+</body>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>

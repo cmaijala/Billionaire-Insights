@@ -14,7 +14,7 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 ### Overview:
 
-The Data Visualization Track for the 2023 Billionaire Insights dataset seeks to uncover and communicate essential insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Our dataset comprises **over 100 unique records**, stored efficiently in a **PostgreSQL** database. Leveraging a combination of Python and JavaScript libraries, we developed interactive visualizations, including a dropdown bar chart, pie chart, scatterplot, and map chart. These visualizations will enable users to filter data by industry, dynamically generating new visuals to populate the bar chart, pie chart, and scatterplot, thus enhancing the user experience and deepening the understanding of wealth trends.
+The Data Visualization Track for the 2023 Billionaire Insights dataset seeks to uncover and communicate essential insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Our dataset comprises **over 2000 unique records**, stored efficiently in a **PostgreSQL** database. Leveraging a combination of Python and JavaScript libraries, we developed interactive visualizations, including a dropdown bar chart, pie chart, scatterplot, and map chart. These visualizations will enable users to filter data by industry, dynamically generating new visuals to populate the bar chart, pie chart, and scatterplot, thus enhancing the user experience and deepening the understanding of wealth trends.
 
 ### Instructions for Use:
 

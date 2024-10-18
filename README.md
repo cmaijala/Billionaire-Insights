@@ -18,7 +18,9 @@ The Data Visualization Track for the 2023 Billionaire Insights dataset seeks to 
 
 ### Instructions for Use:
 
-Users can interact with the project by selecting various filters in the provided dropdown menus. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as wealth distribution across industries or demographic breakdowns by age and gender. The README.md file will provide detailed instructions on how to set up the environment, connect to the PostgreSQL database, and run the Flask server.
+Users can interact with the project by selecting an industry from the dropdown menu, which presents various industry categories in alphabetical order. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as the total number of billionaires, the percentage of billionaires within specific industries, average wealth (in billions), average age, and a list of the wealthiest billionaires.
+
+Our bar chart highlights the top 10 billionaires based on the selected industry. The pie chart illustrates the distribution of self-made versus inherited billionaires by gender within that industry. The scatterplot compares age and wealth (in billions), with distinctions made by gender. Finally, our map chart visualizes the geographical distribution of billionaires by country, showcasing their global spread.
 
 <div align="center">
     <img src="https://github.com/user-attachments/assets/78ee1e32-0c05-48bc-a145-7749c754c7bc" alt="Image 1" width="1000"/>

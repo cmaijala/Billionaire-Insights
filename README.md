@@ -14,13 +14,19 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 ### Overview:
 
-The Data Visualization Track for the 2023 Billionaire Insights dataset aims to explore and communicate key insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Our dataset includes **over 100 unique records**, and we are utilizing **PostgreSQL** to house this data, ensuring efficient storage and retrieval. Using a combination of Python and JavaScript libraries, we will create interactive visualizations, including a dropdown bar chart, pie chart, scatterplot, and map chart. These visualizations allow users to filter data based on various criteria such as industry, country, and wealth source (self-made vs. inherited).
+The Data Visualization Track for the 2023 Billionaire Insights dataset seeks to uncover and communicate essential insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Our dataset comprises **over 100 unique records**, stored efficiently in a **PostgreSQL** database. Leveraging a combination of Python and JavaScript libraries, we developed interactive visualizations, including a dropdown bar chart, pie chart, scatterplot, and map chart. These visualizations will enable users to filter data by industry, dynamically generating new visuals to populate the bar chart, pie chart, and scatterplot, thus enhancing the user experience and deepening the understanding of wealth trends.
 
 ### Instructions for Use:
 
 Users can interact with the project by selecting various filters in the provided dropdown menus. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as wealth distribution across industries or demographic breakdowns by age and gender. The README.md file will provide detailed instructions on how to set up the environment, connect to the PostgreSQL database, and run the Flask server.
 
-![image](https://github.com/user-attachments/assets/f4cd7220-adc9-4c9e-99b0-a8d472fa66eb)
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/78ee1e32-0c05-48bc-a145-7749c754c7bc" alt="Image 1" width="1000"/>
+    <img src="https://github.com/user-attachments/assets/d1f240c7-a888-40a4-be11-0f6300723d2f" alt="Image 2" width="500"/>
+    <img src="https://github.com/user-attachments/assets/f0e5c670-e65a-4e63-a558-e0e0d1388c06" alt="Image 3" width="500"/>
+    <img src="https://github.com/user-attachments/assets/f590f774-30fb-4db8-a102-92acfdc89318" alt="Image 4" width="900"/>
+</div>
+
 
 
 

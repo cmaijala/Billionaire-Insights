@@ -173,30 +173,70 @@ function buildScatter(category, data) {
   Plotly.newPlot('scatter-plot', scatterData, scatterLayout);
 }
 
-// Function to build the world map bubble chart
 function buildBubble(category, data) {
+  //const filtInd = data.filter(object => object.category === category);
   const filtInd = filterData(category, data);
   console.log('Filtered data length:', filtInd.length);
 
   // Extracting latitude, longitude, and countries
   let latitudes = filtInd.map(d => d.country_lat);
+  console.log('Latitude:', latitudes);
   let longitudes = filtInd.map(d => d.country_long);
+  console.log('Longitude:', longitudes);
+  //let billionaireCount = filtInd.length;
+  //console.log('Billionaire Count:', billionaireCount);
   let countries = filtInd.map(d => d.country);
+  console.log('Countries:', countries);
+
+  //let country = [];
+  //let latitude = [];
+  //let longitude = [];
+  //let billionaireCount = [];
+
+  //for (let i = 0; i < filtInd.length; i++) {
+  //  if (country.includes(countries[i]) === false)
+  //    country.push(countries[i]);
+  //    console.log(country);
+  //    latitude.push(latitudes[i]);
+  //    console.log(latitude);
+  //    longitude.push(longitudes[i]);
+  //    console.log(longitude);
+  //    billionaireCount.push(1);
+    //else if (depth < 30) return "greenyellow";
+    //else if (depth < 50) return "yellow";
+    //else if (depth < 70) return "gold";
+    //else if (depth < 90) return "orange";
+  //else billionaireCount[i]++;
 
   const country_map = countries.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
   let country = Array.from(country_map.keys());
-  let billionaireCount = Array.from(country_map.values());
+  console.log(country);
+
+  const latitude_map = latitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  let latitude = Array.from(latitude_map.keys());
+  console.log(latitude);
+
+  const longitude_map = longitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  let longitude = Array.from(longitude_map.keys());
+  console.log(longitude);
+
+  let billionaireCount = Array.from(country_map.values()).map(function(x) { return Math.sqrt(x) * 5; });;
+  console.log(billionaireCount);
+
+  console.log('Billionaire Count:', billionaireCount);
 
   // Build a Bubble Chart
   let bubbleMap = {
     type: 'scatter',
-    x: longitudes,
-    y: latitudes,
+    x: longitude,
+    y: latitude,
     mode: 'markers',
     marker: {
-      size: billionaireCount,
+      size: billionaireCount, // Scale marker size
       color: billionaireCount,
       opacity: 0.75,
+      //colorscale: 'Viridis',
+      //colorbar: { title: 'Billionaire Count' }
     },
     text: country
   };
@@ -208,11 +248,28 @@ function buildBubble(category, data) {
     showlegend: false,
     height: 700,
     width: 1200,
+    responsive: false,
+    aspectRatio: 2,
+    images: [{
+      source: "Resources/world_map_equirectangular_projection.png",
+      width: 1440,
+      height: 720,
+      x: 0,
+      y: 0,
+      xref: "paper",
+      yref: "paper",
+      sizex: 1,
+      sizey: 1,
+      xanchor: "left",
+      yanchor: "bottom",
+      opacity: 1, // Adjust opacity if needed
+      layer: "below" // Place the image behind the plot
+      }],
   };
 
   // Render the Bubble Chart
   Plotly.newPlot('bubble', [bubbleMap], bubbleLayout);
-}
+};
 
 // Function to run on page load
 function init() {

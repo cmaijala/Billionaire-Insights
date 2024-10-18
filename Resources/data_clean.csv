@@ -1,4 +1,4 @@
-rank,finalWorth,category,personName,age,country,city,source,industries,countryOfCitizenship,selfMade,gender,birthDate,lastName,firstName,country_cpi,country_gdp,country_population,country_lat, country_long
+rank,finalWorth,category,personName,age,country,city,source,industries,countryOfCitizenship,selfMade,gender,birthDate,lastName,firstName,country_cpi,country_gdp,country_population,country_lat,country_long
 1,211.0,Fashion & Retail,Bernard Arnault & family,74.0,France,Paris,LVMH,Fashion & Retail,France,False,M,3/5/1949 0:00,Arnault,Bernard,110.05,"$2,715,518,274,227 ",67059887.0,46.227638,2.213749
 2,180.0,Automotive,Elon Musk,51.0,United States,Austin,"Tesla, SpaceX",Automotive,United States,True,M,6/28/1971 0:00,Musk,Elon,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891
 3,114.0,Technology,Jeff Bezos,59.0,United States,Medina,Amazon,Technology,United States,True,M,1/12/1964 0:00,Bezos,Jeff,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891

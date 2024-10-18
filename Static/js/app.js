@@ -209,6 +209,7 @@ function buildBubble(category, data) {
   //else billionaireCount[i]++;
 
   const country_map = countries.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
+  console.log(country_map);
   let country = Array.from(country_map.keys());
   console.log(country);
 
@@ -220,10 +221,19 @@ function buildBubble(category, data) {
   let longitude = Array.from(longitude_map.keys());
   console.log(longitude);
 
-  let billionaireCount = Array.from(country_map.values()).map(function(x) { return Math.sqrt(x) * 5; });;
+  let billionaireCount = Array.from(country_map.values());
+  let radius = billionaireCount.map(function(x) { return Math.sqrt(x) * 5; });
   console.log(billionaireCount);
 
   console.log('Billionaire Count:', billionaireCount);
+
+  let hoverText = [];
+
+  for (let i = 0; i < country.length; i++) {
+    hoverText.push([country[i],billionaireCount[i]])
+  };
+
+  console.log('hoverText:', hoverText);
 
   // Build a Bubble Chart
   let bubbleMap = {
@@ -232,13 +242,13 @@ function buildBubble(category, data) {
     y: latitude,
     mode: 'markers',
     marker: {
-      size: billionaireCount, // Scale marker size
-      color: billionaireCount,
+      size: radius, // Scale marker size
+      color: radius,
       opacity: 0.75,
       //colorscale: 'Viridis',
       //colorbar: { title: 'Billionaire Count' }
     },
-    text: country
+    text: billionaireCount
   };
 
   let bubbleLayout = {

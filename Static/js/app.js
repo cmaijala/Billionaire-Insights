@@ -111,7 +111,15 @@ function buildPie(category, data) {
   }];
 
   const PieLayout = {
-      title: 'Unearned or Self-earned Wealth and Gender',
+    title: {
+      text: 'Earned Wealth and Gender',
+      font: {
+          size: 24, 
+          family: 'Arial, sans-serif',
+          color: '#000',
+          weight: 'bold' 
+      }
+  }, 
       hoverinfo: 'label+percent',
       showlegend: false,
       width: 400,  
@@ -160,7 +168,15 @@ function buildCharts(category, data) {
   }];
 
   const barLayout = {
-    title: 'Top 10 Billionaires by Net Worth',
+    title: {
+      text: 'Top 10 Billionaires by Net Worth',
+      font: {
+          size: 24, 
+          family: 'Arial, sans-serif',
+          color: '#000',
+          weight: 'bold' 
+      }
+  },
     xaxis: { title: 'Billionaire', automargin: true },
     yaxis: { title: 'Net Worth (in billions)' },
     width: 800,  
@@ -207,7 +223,15 @@ function buildScatter(category, data) {
 }];
 
   const scatterLayout = {
-    title: `Age vs. Wealth in ${category}`,
+    title: {
+      text: `Age vs. Wealth in ${category}`,
+      font: {
+          size: 24, 
+          family: 'Arial, sans-serif',
+          color: '#000',
+          weight: 'bold' 
+      }
+  }, 
     xaxis: { title: 'Age' },
     yaxis: { 
         title: 'Wealth (in billions)',
@@ -289,8 +313,8 @@ const normalizedColors = radius.map(r => r / maxRadius); // Normalize for colors
 
 // Define the color scale from blue to red
 const colorScale = [
-    [0, 'blue'],     // Lowest value
-    [1, 'red']       // Highest value
+    [0, 'orange'],     // Lowest value
+    [1, 'green']       // Highest value
 ];
 
 // Build a Bubble Chart
@@ -310,7 +334,15 @@ let bubbleMap = {
 };
 
   let bubbleLayout = {
-    title: `Billionaires by Country`,
+    title: {
+      text: 'Billionaires by Country',
+      font: {
+          size: 24, 
+          family: 'Arial, sans-serif',
+          color: '#000',
+          weight: 'bold' 
+      }
+  }, 
     xaxis: { title: 'Longitude', range: [-180, 180], fixedrange: true  },
     yaxis: { title: 'Latitude', range: [-90, 90], fixedrange: true  },
     showlegend: false,

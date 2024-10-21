@@ -294,6 +294,7 @@ rank,finalWorth,category,personName,age,country,city,source,industries,countryOf
 290,7.6,Technology,Joe Gebbia,41.0,United States,Austin,Airbnb,Technology,United States,True,M,8/21/1981 0:00,Gebbia,Joe,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891
 290,7.6,Real Estate,Philip Ng,64.0,Singapore,Singapore,Real Estate,Real Estate,Singapore,False,M,1/1/1959 0:00,Ng,Philip,114.41,"$372,062,527,489 ",5703569.0,1.352083,103.819836
 290,7.6,Manufacturing,John Reece,66.0,United Kingdom,London,Chemicals,Manufacturing,United Kingdom,True,M,3/7/1957 0:00,Reece,John,119.62,"$2,827,113,184,696 ",66834405.0,55.378051,-3.435973
+534,5.0,Technology,Martin Haefner,69.0,Switzerland,Zurich,"Software, investments",Technology,Switzerland,False,M,1/1/1954 0:00,Haefner,Martin,99.55,"$703,082,435,360 ",8574832.0,46.818188,8.227512
 290,7.6,Real Estate,Leonard Stern,85.0,United States,New York,Real estate,Real Estate,United States,False,M,3/28/1938 0:00,Stern,Leonard,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891
 290,7.6,Technology,Joseph Tsai,59.0,Hong Kong,Hong Kong,E-commerce,Technology,Canada,True,M,1/19/1964 0:00,Tsai,Joseph,,,,,
 290,7.6,Healthcare,Zhong Huijuan,62.0,China,Shanghai,Pharmaceuticals,Healthcare,China,True,F,1/1/1961 0:00,Zhong,Huijuan,125.08,"$19,910,000,000,000 ",1397715000.0,35.86166,104.195397
@@ -536,7 +537,6 @@ rank,finalWorth,category,personName,age,country,city,source,industries,countryOf
 534,5.0,Energy,Robert Bass,75.0,United States,Fort Worth,"Oil, investments",Energy,United States,False,M,3/19/1948 0:00,Bass,Robert,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891
 534,5.0,Healthcare,Dona Bertarelli,55.0,Switzerland,Gstaad,Biotech and investments,Healthcare,Switzerland,False,F,1/1/1968 0:00,Bertarelli,Dona,99.55,"$703,082,435,360 ",8574832.0,46.818188,8.227512
 534,5.0,Finance & Investments,Alexander Gerko,43.0,United Kingdom,London,Trading,Finance & Investments,United Kingdom,True,M,12/3/1979 0:00,Gerko,Alexander,119.62,"$2,827,113,184,696 ",66834405.0,55.378051,-3.435973
-534,5.0,Technology,Martin Haefner,69.0,Switzerland,Zurich,"Software, investments",Technology,Switzerland,False,M,1/1/1954 0:00,Haefner,Martin,99.55,"$703,082,435,360 ",8574832.0,46.818188,8.227512
 534,5.0,Telecom,"Robert Hale, Jr.",56.0,United States,Boston,Telecom,Telecom,United States,True,M,7/8/1966 0:00,Hale,Robert,117.24,"$21,427,700,000,000 ",328239523.0,37.09024,-95.712891
 534,5.0,Healthcare,Viktor Kharitonin,50.0,Russia,Moscow,Pharmaceuticals,Healthcare,Russia,True,M,11/20/1972 0:00,Kharitonin,Viktor,180.75,"$1,699,876,578,871 ",144373535.0,61.52401,105.318756
 534,5.0,Technology,Kim Beom-su,57.0,South Korea,Seoul,Online services,Technology,South Korea,True,M,3/27/1966 0:00,Kim,Beom-su,115.16,"$2,029,000,000,000 ",51709098.0,35.907757,127.766922

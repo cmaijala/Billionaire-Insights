@@ -7,7 +7,7 @@ function loadData(callback) {
 
 // Function to filter data based on category
 function filterData(category, data) {
-  if (category === "All") {
+  if (category === "All Industries") {
     return data; // Return all data if "All" is selected
   }
   return data.filter(obj => obj.category === category);
@@ -16,7 +16,7 @@ function filterData(category, data) {
 // Function to initialize dropdown
 function initDropdown(data) {
   const categories = [...new Set(data.map(obj => obj.category))]; // Unique categories
-  const sortedCategories = ['All', ...categories.sort()]; // Add "All" option
+  const sortedCategories = ['All Industries', ...categories.sort()]; // Add "All" option
 
   const categoryDropdown = d3.select("#selDataset");
   categoryDropdown.html(""); // Clear existing options
@@ -40,7 +40,6 @@ function buildMetadata(category, data) {
   const averageWealth = (totalPeople > 0) ? (totalWealth / totalPeople).toFixed(2) : 0;
   const totalAge = filteredData.reduce((acc, obj) => acc + +obj.age, 0);
   const averageAge = (totalPeople > 0) ? (totalAge / totalPeople).toFixed(2) : 0;
-
   const wealthiestBillionaire = filteredData.sort((a, b) => b.finalWorth - a.finalWorth)[0];
 
   // Prepare fields to display
@@ -52,10 +51,40 @@ function buildMetadata(category, data) {
     `Wealthiest Billionaire: ${wealthiestBillionaire ? `${wealthiestBillionaire.personName} with a net worth of ${wealthiestBillionaire.finalWorth} billion dollars` : "N/A"}`
   ];
 
-  fieldsToDisplay.forEach(field => {
-    panel.append("h6").text(field);
+// Display fields
+fieldsToDisplay.forEach(field => {
+  panel.append("h6").text(field);
+});
+}
+
+function buildLegend() {
+  const legendData = [
+    { label: 'Self-made Female', color: '#FF9999' },
+    { label: 'Self-made Male', color: '#66B3FF' },
+    { label: 'Nepotistic Female', color: '#C0392B' },
+    { label: 'Nepotistic Male', color: '#003366' }
+  ];
+
+  const legendPanel = d3.select("#billionaire-legend");
+  legendPanel.html(""); // Clear previous content
+
+  legendData.forEach(item => {
+    const listItem = legendPanel.append("div").style("display", "flex").style("align-items", "center");
+
+    // Append colored square
+    listItem.append("span")
+      .style("display", "inline-block")
+      .style("width", "15px")
+      .style("height", "15px")
+      .style("background-color", item.color)
+      .style("margin-right", "5px");
+
+    // Append the label
+    listItem.append("span").text(item.label);
   });
 }
+
+buildLegend();
 
 // Function to build pie chart
 function buildPie(category, data) {
@@ -84,7 +113,9 @@ function buildPie(category, data) {
   const PieLayout = {
       title: 'Unearned or Self-earned Wealth and Gender',
       hoverinfo: 'label+percent',
-      showlegend: true
+      showlegend: false,
+      width: 400,  
+      height: 500, 
   };
 
   // Render the pie Chart
@@ -98,7 +129,10 @@ function buildCharts(category, data) {
   // Sort by finalWorth in descending order and take the top 10
   const topTen = filteredData.sort((a, b) => b.finalWorth - a.finalWorth).slice(0, 10);
   const personNames = topTen.map(obj => obj.personName);
+  const personCountries = topTen.map(obj => obj.country);
   const netWorths = topTen.map(obj => +obj.finalWorth);
+  const personIndustry = topTen.map(obj => obj.industries);
+  const personSource = topTen.map(obj => obj.source);
 
   // Assign colors based on self-made status and gender
   const colors = topTen.map(person => {
@@ -108,12 +142,17 @@ function buildCharts(category, data) {
     if (person.selfMade === "False" && person.gender === 'M') return '#003366';
   });
 
+  // Create a formatted text array for hover info
+  const textLabels = topTen.map((person, index) => `${personNames[index]}<br>Net Worth: ${netWorths[index]} billion<br>Country: ${personCountries[index]}
+        <br>Industry: ${personIndustry[index]}<br>Source of Wealth: ${personSource[index]}`);
+
   // For the Bar Chart
   const barData = [{
     type: 'bar',
-    x: personNames,
+    x: personNames, 
     y: netWorths,
-    text: personNames,
+    text: textLabels,
+    hoverinfo: 'text',
     marker: {
       color: colors
     },
@@ -122,9 +161,11 @@ function buildCharts(category, data) {
 
   const barLayout = {
     title: 'Top 10 Billionaires by Net Worth',
-    xaxis: { title: 'Person Name' },
+    xaxis: { title: 'Billionaire', automargin: true },
     yaxis: { title: 'Net Worth (in billions)' },
-  };
+    width: 800,  
+    height: 600, 
+};
 
   // Render the Bar Chart
   Plotly.newPlot('bar', barData, barLayout);
@@ -137,10 +178,14 @@ function buildScatter(category, data) {
   const ages = [];
   const wealths = [];
   const colors = [];
+  const names = [];
+  const countries = [];
 
   validData.forEach(person => {
       ages.push(+person.age);
       wealths.push(+person.finalWorth);
+      names.push(person.personName);
+      countries.push(person.country)
       if (person.selfMade === "True" && person.gender === 'F') colors.push('#FF9999');
       if (person.selfMade === "True" && person.gender === 'M') colors.push('#66B3FF');
       if (person.selfMade === "False" && person.gender === 'F') colors.push('#C0392B');
@@ -148,16 +193,18 @@ function buildScatter(category, data) {
   });
 
   const scatterData = [{
-      x: ages,
-      y: wealths,
-      mode: 'markers',
-      type: 'scatter',
-      marker: {
-          size: 10,
-          color: colors,
-          line: { width: 1 }
-      }
-  }];
+    x: ages,
+    y: wealths,
+    mode: 'markers',
+    type: 'scatter',
+    marker: {
+        size: 10,
+        color: colors,
+        line: { width: 1 }
+    },
+    text: ages.map((age, index) => `Name: ${names[index]}<br>Country: ${countries[index]}<br>Age: ${age}<br>Wealth: $${wealths[index]} billion`), // Custom hover text
+    hoverinfo: 'text' // Display only the text on hover
+}];
 
   const scatterLayout = {
     title: `Age vs. Wealth in ${category}`,
@@ -166,7 +213,10 @@ function buildScatter(category, data) {
         title: 'Wealth (in billions)',
         type: 'log' // Logarithmic scale for y-axis
     },
-    showlegend: false
+    showlegend: false,
+    hovermode: 'closest',
+    width: 750,  
+    height: 500, 
   };
 
   // Render the scatter chart
@@ -174,92 +224,102 @@ function buildScatter(category, data) {
 }
 
 function buildBubble(category, data) {
-  //const filtInd = data.filter(object => object.category === category);
   const filtInd = filterData(category, data);
   console.log('Filtered data length:', filtInd.length);
 
+  // Filter out entries with null latitude or longitude
+  const validData = filtInd.filter(d => d.country_lat !== null && d.country_long !== null);
+  console.log('Valid data length:', validData.length);
+
   // Extracting latitude, longitude, and countries
-  let latitudes = filtInd.map(d => d.country_lat);
+  let latitudes = validData.map(d => d.country_lat);
   console.log('Latitude:', latitudes);
-  let longitudes = filtInd.map(d => d.country_long);
+  let longitudes = validData.map(d => d.country_long);
   console.log('Longitude:', longitudes);
-  //let billionaireCount = filtInd.length;
-  //console.log('Billionaire Count:', billionaireCount);
-  let countries = filtInd.map(d => d.country);
+  let countries = validData.map(d => d.country);
   console.log('Countries:', countries);
 
-  //let country = [];
-  //let latitude = [];
-  //let longitude = [];
-  //let billionaireCount = [];
+  // Create a map to calculate counts, total net worth, and find the richest billionaire
+  const countryStats = {};
 
-  //for (let i = 0; i < filtInd.length; i++) {
-  //  if (country.includes(countries[i]) === false)
-  //    country.push(countries[i]);
-  //    console.log(country);
-  //    latitude.push(latitudes[i]);
-  //    console.log(latitude);
-  //    longitude.push(longitudes[i]);
-  //    console.log(longitude);
-  //    billionaireCount.push(1);
-    //else if (depth < 30) return "greenyellow";
-    //else if (depth < 50) return "yellow";
-    //else if (depth < 70) return "gold";
-    //else if (depth < 90) return "orange";
-  //else billionaireCount[i]++;
+  validData.forEach(person => {
+    const country = person.country;
+    const netWorth = +person.finalWorth;
 
-  const country_map = countries.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
-  console.log(country_map);
-  let country = Array.from(country_map.keys());
-  console.log(country);
+    if (!countryStats[country]) {
+      countryStats[country] = {
+        count: 0,
+        totalNetWorth: 0,
+        richest: { name: person.personName, netWorth: netWorth },
+        lat: person.country_lat, // Store latitude
+        lon: person.country_long  // Store longitude
+      };
+    }
 
-  const latitude_map = latitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
-  let latitude = Array.from(latitude_map.keys());
-  console.log(latitude);
+    countryStats[country].count += 1;
+    countryStats[country].totalNetWorth += netWorth;
 
-  const longitude_map = longitudes.reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
-  let longitude = Array.from(longitude_map.keys());
-  console.log(longitude);
+    if (netWorth > countryStats[country].richest.netWorth) {
+      countryStats[country].richest = { name: person.personName, netWorth: netWorth };
+    }
+  });
 
-  let billionaireCount = Array.from(country_map.values());
-  let radius = billionaireCount.map(function(x) { return Math.sqrt(x) * 5; });
-  console.log(billionaireCount);
+  // Prepare data for the bubble chart
+  const countrys = Object.keys(countryStats);
+  const billionaireCounts = countrys.map(c => countryStats[c].count);
+  const averageNetWorth = countrys.map(c => countryStats[c].totalNetWorth / countryStats[c].count);
+  const richestBillionaire = countrys.map(c => countryStats[c].richest.name);
+  const latitudesFinal = countrys.map(c => countryStats[c].lat); // Get latitudes from countryStats
+  const longitudesFinal = countrys.map(c => countryStats[c].lon); // Get longitudes from countryStats
 
-  console.log('Billionaire Count:', billionaireCount);
+  // Calculate radius for bubbles
+  const radius = billionaireCounts.map(x => Math.sqrt(x) * 5);
 
-  let hoverText = [];
+  // Create hover text
+  let hoverText = countrys.map((c, i) => 
+    `Country: ${c}<br>` +
+    `Number of Billionaires: ${billionaireCounts[i]}<br>` +
+    `Average Net Worth: $${averageNetWorth[i].toFixed(2)} billion<br>` +
+    `Richest Billionaire: ${richestBillionaire[i]}`
+  );
+  
+// Assuming you have the original radius array calculated
+const maxRadius = Math.max(...radius);
+const normalizedColors = radius.map(r => r / maxRadius); // Normalize for colorscale
 
-  for (let i = 0; i < country.length; i++) {
-    hoverText.push([country[i],billionaireCount[i]])
-  };
+// Define the color scale from blue to red
+const colorScale = [
+    [0, 'blue'],     // Lowest value
+    [1, 'red']       // Highest value
+];
 
-  console.log('hoverText:', hoverText);
-
-  // Build a Bubble Chart
-  let bubbleMap = {
+// Build a Bubble Chart
+let bubbleMap = {
     type: 'scatter',
-    x: longitude,
-    y: latitude,
+    x: longitudesFinal, // Use filtered longitudes
+    y: latitudesFinal,  // Use filtered latitudes
     mode: 'markers',
     marker: {
-      size: radius, // Scale marker size
-      color: radius,
-      opacity: 0.75,
-      //colorscale: 'Viridis',
-      //colorbar: { title: 'Billionaire Count' }
+        size: radius, // Keep the original radius for marker size
+        color: normalizedColors, // Use normalized values for colorscale
+        colorscale: colorScale,  // Apply the color scale
+        opacity: 0.75,
     },
-    text: billionaireCount
-  };
+    text: hoverText,
+    hoverinfo: 'text'
+};
 
   let bubbleLayout = {
     title: `Billionaires by Country`,
-    xaxis: { title: 'Longitude' , range: [-180, 180],},
-    yaxis: { title: 'Latitude', range: [-90, 90], },
+    xaxis: { title: 'Longitude', range: [-180, 180], fixedrange: true  },
+    yaxis: { title: 'Latitude', range: [-90, 90], fixedrange: true  },
     showlegend: false,
     height: 700,
     width: 1200,
     responsive: false,
     aspectRatio: 2,
+    hovermode: 'closest',
+    dragmode: false, 
     images: [{
       source: "Resources/world_map_equirectangular_projection.png",
       width: 1440,
@@ -272,14 +332,14 @@ function buildBubble(category, data) {
       sizey: 1,
       xanchor: "left",
       yanchor: "bottom",
-      opacity: 1, // Adjust opacity if needed
-      layer: "below" // Place the image behind the plot
-      }],
+      opacity: 1,
+      layer: "below"
+    }],
   };
 
   // Render the Bubble Chart
   Plotly.newPlot('bubble', [bubbleMap], bubbleLayout);
-};
+}
 
 // Function to run on page load
 function init() {

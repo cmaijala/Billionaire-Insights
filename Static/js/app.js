@@ -3,6 +3,14 @@ function loadData(callback) {
   d3.csv("Resources/data_clean.csv").then(data => {
     callback(data);
   });
+  //fetch('http://127.0.0.1:5000/api/v1.0/data')
+  //.then(response => response.json())
+  //.then(data => {
+  //  console.log(data); // Do something with the received data
+  //})
+  //.catch(error => {
+  //  console.error('Error:', error);
+  //});
 }
 
 // Function to filter data based on category

@@ -16,6 +16,9 @@ Photo by <a href="https://unsplash.com/@jakevizek?utm_content=creditCopyText&utm
 
 The Data Visualization Track for the 2023 Billionaire Insights dataset seeks to uncover and communicate essential insights about wealth distribution, demographics, and industry representation among the world’s billionaires. Our dataset comprises **over 2000 unique records**, stored efficiently in a **PostgreSQL** database. Leveraging a combination of Python and JavaScript libraries, we developed interactive visualizations, including a dropdown bar chart, pie chart, scatterplot, and map chart. These visualizations will enable users to filter data by industry, dynamically generating new visuals to populate the bar chart, pie chart, and scatterplot, thus enhancing the user experience and deepening the understanding of wealth trends.
 
+### Good to know: 
+In our project, we used the Altair Python library to create interactive and visually appealing charts, leveraging its declarative syntax for efficient data visualization. Altair was not covered in class, making it a new and valuable tool for our analysis.
+
 ### Instructions for Use:
 
 Users can interact with the project by selecting an industry from the dropdown menu, which presents various industry categories in alphabetical order. Upon selection, the visualizations will dynamically update to reflect the chosen parameters, displaying insights such as the total number of billionaires, the percentage of billionaires within specific industries, average wealth (in billions), average age, and a list of the wealthiest billionaires.

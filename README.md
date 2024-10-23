@@ -25,8 +25,8 @@ Our bar chart highlights the top 10 billionaires based on the selected industry.
 <div align="center">
     <img src="https://github.com/user-attachments/assets/d0a69a10-12c0-4554-aeed-b15dc4b3d900" alt="Image 1" width="1000"/>
     <img src="https://github.com/user-attachments/assets/96ca877f-da83-45c2-bb2b-cb8905088b2c" alt="Image 2" width="500"/>
-    <img src="https://github.com/user-attachments/assets/f0e5c670-e65a-4e63-a558-e0e0d1388c06" alt="Image 3" width="500"/>
-    <img src="https://github.com/user-attachments/assets/f590f774-30fb-4db8-a102-92acfdc89318" alt="Image 4" width="900"/>
+    <img src="https://github.com/user-attachments/assets/1794b495-2a35-48b3-b214-e498bbb8747a" alt="Image 3" width="500"/>
+    <img src="https://github.com/user-attachments/assets/d3d24ea6-6df4-4e44-bdf2-a0ad226812da" alt="Image 4" width="900"/>
 </div>
 
 

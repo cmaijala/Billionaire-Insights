@@ -38,3 +38,4 @@ In developing this project, we have made significant efforts to address ethical 
 ### References:
 
 - Nidula Elgiriyewithana. (2023). Billionaires Statistics Dataset (2023) [Data set]. Kaggle. [Link](https://doi.org/10.34740/KAGGLE/DSV/6570253)
+- This project utilized ChatGPT, a language model developed by OpenAI, for generating text and answering questions. For more information about ChatGPT, visit OpenAI's ChatGPT.

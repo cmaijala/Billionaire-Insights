@@ -43,3 +43,5 @@ In developing this project, we have made significant efforts to address ethical 
 - Nidula Elgiriyewithana. (2023). Billionaires Statistics Dataset (2023) [Data set]. Kaggle. [Link](https://doi.org/10.34740/KAGGLE/DSV/6570253)
 - This project utilized ChatGPT, a language model developed by OpenAI, for generating text and answering questions. For more information about ChatGPT, visit OpenAI's ChatGPT.
 - Google Presentation [Link](https://docs.google.com/presentation/d/1t6iQwTEpcZBjWVPv7MWkNNq1fEHFKdrD1qW3QYJatUY/edit?usp=sharing)
+- Altair. (n.d.). Stacked Bar Chart with Sorted Segments. Retrieved from https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html
+- Altair. (n.d.). Normalized Stacked Bar Chart. Retrieved from https://altair-viz.github.io/gallery/normalized_stacked_bar_chart.html

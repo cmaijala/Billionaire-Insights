@@ -45,3 +45,6 @@ In developing this project, we have made significant efforts to address ethical 
 - Google Presentation [Link](https://docs.google.com/presentation/d/1t6iQwTEpcZBjWVPv7MWkNNq1fEHFKdrD1qW3QYJatUY/edit?usp=sharing)
 - Altair. (n.d.). Stacked Bar Chart with Sorted Segments. Retrieved from https://altair-viz.github.io/gallery/stacked_bar_chart_sorted_segments.html
 - Altair. (n.d.). Normalized Stacked Bar Chart. Retrieved from https://altair-viz.github.io/gallery/normalized_stacked_bar_chart.html
+- World map background image by Wikimedia user TUBS, accessed via Wikimedia Commons (https://en.m.wikipedia.org/wiki/File:World_location_map_%28equirectangular_180%29.svg)
+- Code to run SQL queries using SQLAlchemy from the top answer (by user joris) to this StackOverflow question: https://stackoverflow.com/questions/27884268/return-pandas-dataframe-from-postgresql-query-with-sqlalchemy
+
